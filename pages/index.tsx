@@ -20,7 +20,12 @@ export default function Home() {
       {articles.contents.map((content:any) => {
         return (
           <React.Fragment key={content.id}>
-            <p>{content.title}</p>
+            <section>
+              <a href={content.url}>
+                <p>{content.title}</p>
+                <p>{content.publish_article}</p>
+              </a>
+            </section>
           </React.Fragment>
         )
       })}
