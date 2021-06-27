@@ -1,28 +1,31 @@
 import { useDeno } from 'framework/react'
 import React from 'react'
-import Logo from '~/components/logo.tsx'
+import { config } from "dotenv";
+// import "https://deno.land/x/dotenv/load.ts";
 
 export default function Home() {
-  const version = useDeno(() => Deno.version.deno)
-
+  const articles = useDeno( async() =>  {
+    return await (await fetch(`https://ryusou-portfolio.microcms.io/api/v1/articles`, {
+      headers: {
+        'X-API-KEY': `${config().X_API_KEY}`,
+      }
+    })).json()
+  })
+  console.log(articles)
   return (
     <div className="page">
       <head>
-        <title>Hello World - Aleph.js</title>
+        <title>Ryusou Profile</title>
         <link rel="stylesheet" href="../style/index.css" />
       </head>
-      <p className="logo"><Logo /></p>
-      <h1>Welcome to use <strong>Aleph.js</strong>!</h1>
-      <p className="links">
-        <a href="https://alephjs.org" target="_blank">Website</a>
-        <span></span>
-        <a href="https://alephjs.org/docs/get-started" target="_blank">Get Started</a>
-        <span></span>
-        <a href="https://alephjs.org/docs" target="_blank">Docs</a>
-        <span></span>
-        <a href="https://github.com/alephjs/aleph.js" target="_blank">Github</a>
-      </p>
-      <p className="copyinfo">Built by Aleph.js in Deno {version}</p>
+      <h1>Welcome to <strong>Ryusou Profile</strong>!</h1>
+      {articles.contents.map((content:any) => {
+        return (
+          <React.Fragment key={content.id}>
+            <p>{content.title}</p>
+          </React.Fragment>
+        )
+      })}
     </div>
   )
 }
