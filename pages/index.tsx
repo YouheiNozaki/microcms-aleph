@@ -1,7 +1,6 @@
 import { useDeno } from 'framework/react'
 import React from 'react'
 import { config } from "dotenv";
-// import "https://deno.land/x/dotenv/load.ts";
 
 export default function Home() {
   const articles = useDeno( async() =>  {
@@ -11,7 +10,6 @@ export default function Home() {
       }
     })).json()
   })
-  console.log(articles)
   return (
     <div className="page">
       <head>
@@ -30,4 +28,3 @@ export default function Home() {
   )
 }
 
-// curl -fsSL https://deno.land/x/install/install.sh | sh -s v1.11.2 && /vercel/.deno/bin/deno run -A https://deno.land/x/aleph@v0.3.0-alpha.33/cli.ts build
