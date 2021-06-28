@@ -1,0 +1,11 @@
+.card {
+  margin: 20px;
+}
+.card:hover {
+  opacity: 0.7;
+}
+
+.cardLink {
+  text-decoration: none;
+  color: black;
+}

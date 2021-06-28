@@ -1,4 +1,6 @@
 import React from "react";
+import "./card.css"
+import dayjs from "https://cdn.skypack.dev/dayjs@1.10.4";
 
 type Props = {
   id?: string;
@@ -9,13 +11,11 @@ type Props = {
 
 export const Card: React.VFC<Props> = (props) => {
   return (
-    <React.Fragment key={props.id}>
-      <article>
-        <a href={props.url}>
+      <article className="card">
+        <a href={props.url} className="cardLink" target="_blank"  rel="noopener noreferrer">
           <p>{props.title}</p>
-          <p>{props.publish_article}</p>
+          <p>{dayjs(props.publish_article).format("YYYY年MM月DD日")}</p>
         </a>
       </article>
-    </React.Fragment>
   );
 };

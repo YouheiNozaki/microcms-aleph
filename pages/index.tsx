@@ -30,7 +30,6 @@ export default function Home() {
     <div className="page">
       <head>
         <title>Ryusou Profile</title>
-        {/* <link rel="stylesheet" href="../style/index.css" /> */}
       </head>
       <section>
         {articles.contents.map((content) => {
