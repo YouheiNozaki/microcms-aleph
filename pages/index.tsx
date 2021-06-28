@@ -19,8 +19,8 @@ export default function Home() {
         <title>Ryusou Profile</title>
         <link rel="stylesheet" href="../style/index.css" />
       </head>
-      <h1>
-        Welcome to <strong>Ryusou Profile</strong>!
+      <h1 className="text-6xl">
+        Welcome to <strong className="text-6xl">Ryusou Profile</strong>!
       </h1>
       {articles.contents.map((content: any) => {
         return (

@@ -1,4 +1,5 @@
 import React, { ComponentType } from "react";
+import "https://esm.sh/tailwindcss/dist/tailwind.min.css"
 
 export default function App(
   { Page, pageProps }: { Page: ComponentType<any>; pageProps: any },
