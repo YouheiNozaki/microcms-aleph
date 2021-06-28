@@ -1,16 +1,21 @@
 import React, { ComponentType } from "react";
-import "https://esm.sh/tailwindcss/dist/tailwind.min.css";
+import { Header } from "./components/Header/header.tsx";
+import "./style/layout.css"
 
 export default function App(
   { Page, pageProps }: { Page: ComponentType<any>; pageProps: any },
 ) {
   return (
-    <main>
-      <head>
-        <meta name="viewport" content="width=device-width" />
-      </head>
-      <Page {...pageProps} />
-    </main>
+    <>
+      <Header />
+      <main className="main">
+        <head>
+          <meta name="viewport" content="width=device-width" />
+          <link rel="stylesheet" href="./style/index.css" />
+        </head>
+        <Page {...pageProps} />
+      </main>
+    </>
   );
 }
 

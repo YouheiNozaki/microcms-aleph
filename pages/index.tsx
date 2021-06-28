@@ -1,6 +1,9 @@
 import { useDeno } from "framework/react";
 import React from "react";
 import { config } from "dotenv";
+import "../style/home.css";
+
+import { Card } from "../components/Card/card.tsx";
 
 type Post = {
   contents: [{
@@ -27,23 +30,21 @@ export default function Home() {
     <div className="page">
       <head>
         <title>Ryusou Profile</title>
-        <link rel="stylesheet" href="../style/index.css" />
+        {/* <link rel="stylesheet" href="../style/index.css" /> */}
       </head>
-      <h1 className="text-6xl">
-        Welcome to <strong className="text-6xl">Ryusou Profile</strong>!
-      </h1>
-      {articles.contents.map((content) => {
-        return (
-          <React.Fragment key={content.id}>
-            <section>
-              <a href={content.url}>
-                <p>{content.title}</p>
-                <p>{content.publish_article}</p>
-              </a>
-            </section>
-          </React.Fragment>
-        );
-      })}
+      <section>
+        {articles.contents.map((content) => {
+          return (
+            <React.Fragment key={content.id}>
+              <Card
+                url={content.url}
+                title={content.title}
+                publish_article={content.publish_article}
+              />
+            </React.Fragment>
+          );
+        })}
+      </section>
     </div>
   );
 }
