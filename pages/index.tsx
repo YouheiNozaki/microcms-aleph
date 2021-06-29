@@ -28,6 +28,11 @@ export default function Home() {
       },
     )).json();
   });
+
+  if (articles === undefined) {
+    <div>Loading....</div>
+  }
+
   return (
     <div className="page">
       <head>
