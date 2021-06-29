@@ -30,7 +30,7 @@ export default function Home() {
   });
 
   if (articles === undefined) {
-    <div>Loading....</div>
+    <div>Loading....</div>;
   }
 
   return (
@@ -39,8 +39,10 @@ export default function Home() {
         <title>Ryusou Profile</title>
       </head>
       <section>
-        {articles.contents.map((content) => {
-          const categorys = content.category.map((category) => category.id);
+        {articles.contents.map(async (content) => {
+          const categorys = await content.category.map((category) =>
+            category.id
+          );
           const categoryId = categorys[0];
           return (
             <React.Fragment key={content.id}>
@@ -50,7 +52,6 @@ export default function Home() {
                 publish_article={content.publish_article}
                 category={categoryId}
               />
-
             </React.Fragment>
           );
         })}
