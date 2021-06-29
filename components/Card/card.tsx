@@ -32,7 +32,7 @@ export const Card: React.VFC<Props> = (
             ? <img src="/speakerdeck.png" width="32px" alt="speakerdeck" />
             : <img src="/cat.jpg" width="40px" />}
         </p>
-        <p>{title}</p>
+        <h3>{title}</h3>
         <p>{dayjs(publish_article).format("YYYY年MM月DD日")}</p>
       </a>
     </article>
