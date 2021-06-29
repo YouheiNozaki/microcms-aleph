@@ -1,3 +1,5 @@
 export default {
-  "ssr": true,
+  "ssr": {
+    staticPaths: `/`
+  },
 };
