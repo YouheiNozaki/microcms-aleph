@@ -39,8 +39,8 @@ export default function Home() {
         <title>Ryusou Profile</title>
       </head>
       <section>
-        {articles.contents.map(async (content) => {
-          const categorys = await content.category.map((category) =>
+        {articles.contents.map((content) => {
+          const categorys = content.category.map((category) =>
             category.id
           );
           const categoryId = categorys[0];
