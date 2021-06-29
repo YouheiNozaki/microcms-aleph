@@ -45,6 +45,7 @@ export default function Home() {
                 publish_article={content.publish_article}
                 category={categoryId}
               />
+
             </React.Fragment>
           );
         })}
