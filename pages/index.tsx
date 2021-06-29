@@ -11,6 +11,9 @@ type Post = {
     url: string;
     title: string;
     publish_article: string;
+    category: [{
+      id: "zenn" | "note" | "qiita" | "speakerdeck";
+    }];
   }];
 };
 
@@ -25,7 +28,6 @@ export default function Home() {
       },
     )).json();
   });
-
   return (
     <div className="page">
       <head>
@@ -33,12 +35,15 @@ export default function Home() {
       </head>
       <section>
         {articles.contents.map((content) => {
+          const categorys = content.category.map((category) => category.id);
+          const categoryId = categorys[0];
           return (
             <React.Fragment key={content.id}>
               <Card
                 url={content.url}
                 title={content.title}
                 publish_article={content.publish_article}
+                category={categoryId}
               />
             </React.Fragment>
           );
