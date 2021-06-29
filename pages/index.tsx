@@ -27,7 +27,7 @@ export default function Home() {
         },
       },
     )).json();
-  });
+  }, { revalidate: true });
   return (
     <div className="page">
       <head>
