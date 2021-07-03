@@ -23,7 +23,7 @@ export default function Home() {
       `https://ryusou-portfolio.microcms.io/api/v1/articles?limit=99`,
       {
         headers: {
-          "X-API-KEY": `${config().X_API_KEY}`,
+          "X-API-KEY": `${Deno.env.get("X_API_KEY")}`,
         },
       },
     )).json();

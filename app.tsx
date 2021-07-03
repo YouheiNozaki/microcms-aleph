@@ -1,6 +1,6 @@
 import React, { ComponentType } from "react";
 import { Header } from "./components/Header/header.tsx";
-// import "./style/layout.css";
+import "./style/layout.css";
 
 export default function App(
   { Page, pageProps }: { Page: ComponentType<any>; pageProps: any },
