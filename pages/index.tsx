@@ -1,6 +1,5 @@
 import { useDeno } from "framework/react";
 import React from "react";
-import { config } from "dotenv";
 import "../style/home.css";
 
 import { Card } from "../components/Card/card.tsx";
