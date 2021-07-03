@@ -3,29 +3,16 @@ import React from "react";
 import "../style/home.css";
 
 import { Card } from "../components/Card/card.tsx";
+import { microcmsClient } from "../lib/microcmsClient.ts";
 
-type Post = {
-  contents: [{
-    id: string;
-    url: string;
-    title: string;
-    publish_article: string;
-    category: [{
-      id: "zenn" | "note" | "qiita" | "speakerdeck";
-    }];
-  }];
-};
+import type { Post } from "../types/post.ts";
 
 export default function Home() {
-  const articles = useDeno<Post>(async () => {
-    return await (await fetch(
-      `https://ryusou-portfolio.microcms.io/api/v1/articles?limit=99`,
-      {
-        headers: {
-          "X-API-KEY": `${Deno.env.get("X_API_KEY")}`,
-        },
-      },
-    )).json();
+  const articles = useDeno(async () => {
+    return await microcmsClient.get<Post>({
+      endpoint: "articles",
+      queries: { limit: 99 },
+    });
   });
 
   if (articles === undefined) {
@@ -39,9 +26,7 @@ export default function Home() {
       </head>
       <section>
         {articles.contents.map((content) => {
-          const categorys = content.category.map((category) =>
-            category.id
-          );
+          const categorys = content.category.map((category) => category.id);
           const categoryId = categorys[0];
           return (
             <React.Fragment key={content.id}>
