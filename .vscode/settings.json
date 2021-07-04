@@ -8,5 +8,8 @@
     "https://e": false,
     "https://esm.": false,
     "https://esm.s": false
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
   }
 }
