@@ -13,7 +13,7 @@ export default function Home() {
       endpoint: "articles",
       queries: { limit: 99 },
     });
-  });
+  }, { revalidate: 1 });
 
   if (articles === undefined) {
     <div>Loading....</div>;
