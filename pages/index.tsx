@@ -8,8 +8,8 @@ import { microcmsClient } from "../lib/microcmsClient.ts";
 import type { Post } from "../types/post.ts";
 
 export default function Home() {
-  const articles = useDeno(async () => {
-    return await microcmsClient.get<Post>({
+  const articles = useDeno<Post>(async () => {
+    return await microcmsClient.get({
       endpoint: "articles",
       queries: { limit: 99 },
     });
