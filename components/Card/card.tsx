@@ -9,7 +9,7 @@ type Props = {
   category: "zenn" | "note" | "qiita" | "speakerdeck";
 };
 
-export const Card: React.VFC<Props> = (
+const Card: React.VFC<Props> = (
   { url, title, publish_article, category },
 ) => {
   return (
@@ -38,3 +38,5 @@ export const Card: React.VFC<Props> = (
     </article>
   );
 };
+
+export default Card

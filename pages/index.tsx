@@ -1,11 +1,13 @@
 import { useDeno } from "framework/react";
 import React from "react";
+import { dynamic, Fallback } from 'framework/react';
 import "../style/home.css";
 
-import { Card } from "../components/Card/card.tsx";
 import { microcmsClient } from "../lib/microcmsClient.ts";
 
 import type { Post } from "../types/post.ts";
+
+const Card = dynamic(() => import("../components/Card/card.tsx"))
 
 export default function Home() {
   const articles = useDeno<Post>(async () => {
@@ -30,12 +32,14 @@ export default function Home() {
           const categoryId = categorys[0];
           return (
             <React.Fragment key={content.id}>
-              <Card
-                url={content.url}
-                title={content.title}
-                publish_article={content.publish_article}
-                category={categoryId}
-              />
+              <Fallback to={<p>Loading....</p>}>
+                <Card
+                  url={content.url}
+                  title={content.title}
+                  publish_article={content.publish_article}
+                  category={categoryId}
+                  />
+              </Fallback>
             </React.Fragment>
           );
         })}
