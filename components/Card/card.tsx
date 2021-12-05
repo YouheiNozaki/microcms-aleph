@@ -1,5 +1,4 @@
 import React from "react";
-import "./card.css";
 import dayjs from "https://cdn.skypack.dev/dayjs@1.10.4";
 
 type Props = {
@@ -14,10 +13,11 @@ export const Card: React.VFC<Props> = (
   { url, title, publish_article, category },
 ) => {
   return (
-    <article className="card">
+    <article className="$card">
+      <link rel="stylesheet" href="./card.module.css" />
       <a
         href={url}
-        className="cardLink"
+        className="$cardLink"
         target="_blank"
         rel="noopener noreferrer"
       >
